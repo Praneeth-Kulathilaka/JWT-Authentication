@@ -32,3 +32,6 @@ func main() {
 	route.Run(":8080");
 
 }
+func Protected(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"message": "This is a protected route"})
+}
