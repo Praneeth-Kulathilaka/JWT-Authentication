@@ -1,12 +1,15 @@
 package main
 
-import(
+import (
+	"go_gin_JWT_auth/Routes"
+	"go_gin_JWT_auth/middlewares"
 	"net/http"
-    "github.com/gin-gonic/gin"
-    "go.mongodb.org/mongo-driver/mongo"
-    "go.mongodb.org/mongo-driver/mongo/options"
-    "github.com/dgrijalva/jwt-go"
-	"./models/user.go"
+
+	"github.com/dgrijalva/jwt-go"
+	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
+	// "./models/user.go"
 )
 var (
 	client *mongo.Client
@@ -22,9 +25,9 @@ func main() {
         c.String(http.StatusOK, "Pong")
     })
 
-	route.POST("/register", Register)
-	route.POST("/login", Login)
-	route.GET("/protected", AuthMiddleware(), Protected)
+	route.POST("/register", Routes.Register)
+	route.POST("/login", Routes.Login)
+	route.GET("/protected", middlewares.AuthMiddleware(), Protected)
 
 	route.Run(":8080");
 
