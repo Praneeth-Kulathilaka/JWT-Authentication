@@ -9,7 +9,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	// "./models/user.go"
+	"JWT/models"
+	"JWT/routes"
+	"JWT/middlewares"
 )
 var (
 	client *mongo.Client
